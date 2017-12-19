@@ -10,7 +10,7 @@
 -->
 
 <AudioConfigs version="2">
-  <card name="tegrart5639">
+  <card name="SGTL5000">
     <pcm_config name="music-playback"
                 device_id="0"
                 rate="48000"

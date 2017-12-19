@@ -33,9 +33,9 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Kernel
-#TARGET_KERNEL_SOURCE := kernel/nvidia/shield
+#TARGET_KERNEL_SOURCE := kernel
 #TARGET_KERNEL_CONFIG := tegra12_android_defconfig
-BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1
+BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1 androidboot.selinux=permissive r8169.use_dac=1 usb_port_owner_info=2 lp0_vec=2064@0xf46ff000
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -52,9 +52,7 @@ BOARD_USES_ALSA_AUDIO := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_HCI := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/nvidia/jetson/comms
-# At least when debugging is enabled, we have the same crash as manta
-BCM_BLUETOOTH_MANTA_BUG := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/nvidia/foster/comms
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -68,7 +66,7 @@ MAX_EGL_CACHE_SIZE := 4194304
 MAX_EGL_CACHE_ENTRY_SIZE := 262144
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/nvidia/jetson/initfiles/fstab.jetson-tk1
+TARGET_RECOVERY_FSTAB := device/nvidia/foster/initfiles/fstab.jetson-tk1
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -85,10 +83,5 @@ WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan0"
 WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/nvidia/jetson/sepolicy
-
-# Vendor Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_jetson-tk1
-TARGET_LIBINIT_DEFINES_FILE := device/nvidia/jetson/init/init_jetson-tk1.cpp
+BOARD_SEPOLICY_DIRS += device/nvidia/foster/sepolicy
 

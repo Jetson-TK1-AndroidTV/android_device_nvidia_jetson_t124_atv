@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Allow volume change on the device. -->
+    <!-- Don't allow volume change on the device. -->		
     <bool name="config_useFixedVolume">false</bool>
 
     <!-- Control the behavior when the user long presses the home button.

@@ -40,9 +40,13 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_CHARACTERISTICS := tv
 TARGET_TEGRA_VERSION := t124
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.name
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.nrdp.modelgroup=SHIELDANDROIDTV
+
+# Define Netflix nrdp properties
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/nrdp.modelgroup.xml:system/etc/permissions/nrdp.modelgroup.xml
 
 # Boot Animation
 PRODUCT_COPY_FILES += \
@@ -55,10 +59,11 @@ PRODUCT_COPY_FILES += \
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    device/nvidia/jetson/overlay
+    device/nvidia/foster/overlay
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    busybox \
     fstab.jetson-tk1 \
     init.recovery.jetson-tk1.rc \
     init.jetson-tk1.rc \
@@ -111,6 +116,7 @@ PRODUCT_PACKAGES += \
     LeanbackLauncher \
     LeanbackCustomize \
     LeanbackIme \
+    Provision \
     TvProvider \
     TvSettings \
     tv_input.default \

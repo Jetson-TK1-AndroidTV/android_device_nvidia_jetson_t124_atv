@@ -24,11 +24,11 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/google/atv/products/atv_base.mk)
 # Inherit from jetson-tk1 device
-$(call inherit-product, device/nvidia/jetson/device.mk)
+$(call inherit-product, device/nvidia/foster/device.mk)
 
 # Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := full_jetson
-PRODUCT_DEVICE := jetson
+PRODUCT_NAME := foster_e
+PRODUCT_DEVICE := foster
 PRODUCT_BRAND := NVIDIA
 PRODUCT_MANUFACTURER := NVIDIA
-PRODUCT_MODEL := Jetson TK1
+PRODUCT_MODEL := SHIELD TV
